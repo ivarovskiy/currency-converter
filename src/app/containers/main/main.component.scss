@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100%;
+
+    .currencyContainer {
+        display: flex;
+        flex-direction: column;
+
+        :nth-last-child(2n) {
+            padding-bottom: 30px;
+        }
+    }
+}

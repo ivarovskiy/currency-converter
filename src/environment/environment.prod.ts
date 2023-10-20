@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiKey: 'cur_live_XBWBD3a6KbEb4FR5cjamNjpCHS9j4LIA2wi7YtwC',
+  apiKey: '',
   apiSettings: {
     currencies: 'EUR,USD',
     base_currency: 'UAH',
