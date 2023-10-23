@@ -58,7 +58,7 @@ export class ConvertService {
         flag
       );
     } else {
-      return of(0); 
+      return of(0);
     }
   }
 }

@@ -42,7 +42,6 @@ export class OpenExchangeRatesService {
           const rates = response.rates;
 
           if (rates && rates[from] && rates[to]) {
-            // Проверяем наличие курсов для исходной и целевой валюты
             let fromRate;
             let toRate;
 
@@ -53,17 +52,10 @@ export class OpenExchangeRatesService {
               fromRate = rates[to];
               toRate = rates[from];
             }
-            // const fromRate = rates[from];
-            // const toRate = rates[to];
-
-            // Преобразуем входное значение в число и умножаем на соответствующий курс
-            const convertedValue = Math.round(
-              parseFloat(value) * (toRate / fromRate)
-            );
+            const convertedValue = parseFloat(value) * (toRate / fromRate);
 
             return +convertedValue.toFixed(3);
           } else {
-            // Вернуть ошибку или значение по умолчанию, если курсы не найдены
             throw new Error('Currency rates not found');
           }
         })
