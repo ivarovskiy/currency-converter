@@ -1,0 +1,11 @@
+<div class="main">
+  <div class="currencyContainer">
+    <app-dropdown [dropdownId]="'currencyFrom'"></app-dropdown>
+    <app-input [form]="mainForm" [inputId]="'amount'"></app-input>
+  </div>
+  <app-rotate-button></app-rotate-button>
+  <div class="currencyContainer">
+    <app-dropdown [dropdownId]="'currencyTo'"></app-dropdown>
+    <app-input [form]="mainForm" [inputId]="'convertAmount'"></app-input>
+  </div>
+</div>
