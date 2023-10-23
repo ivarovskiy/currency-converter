@@ -1,10 +1,8 @@
-<div>
-  <form [formGroup]="formGroup" class="input">
-    <input
-      pInputText
-      id="money"
-      pKeyFilter="money"
-      class="w-full"
-      formControlName="value" />
-  </form>
-</div>
+<form [formGroup]="form" class="input">
+  <input
+    pInputText
+    pKeyFilter="money"
+    class="w-full"
+    [id]="inputId"
+    [formControlName]="inputId" />
+</form>

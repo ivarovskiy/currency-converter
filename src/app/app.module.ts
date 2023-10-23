@@ -16,6 +16,7 @@ import { InputComponent } from './components/input/input.component';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { TruncateDecimalPipe } from './pipes/truncate-decimal.pipe';
@@ -42,6 +43,7 @@ import { RotateButtonComponent } from './components/rotate-button/rotate-button.
     DropdownModule,
     InputTextModule,
     ButtonModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

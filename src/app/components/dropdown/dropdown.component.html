@@ -1,28 +1,29 @@
 <div>
   <p-dropdown
-    [options]="currencies"
+    [options]="rates | keyvalue"
     [(ngModel)]="selectedCurrency"
-    optionLabel="name"
+    optionLabel="key"
     [filter]="true"
-    filterBy="name"
+    filterBy="key"
     [showClear]="true"
+    (onChange)="onChange($event)"
     placeholder="Please, select a currency">
     <ng-template pTemplate="selectedItem">
-      <div class="flex align-items-center gap-2" *ngIf="selectedCurrency">
+      <div
+        class="flex align-items-center gap-2"
+        *ngIf="selectedCurrency | keyvalue">
         <div
           class="currency-flag"
-          [class]="
-            'currency-flag-' + selectedCurrency.code.toLowerCase()
-          "></div>
-        <div>{{ selectedCurrency.code }} - {{ selectedCurrency.name }}</div>
+          [class]="'currency-flag-' + selectedCurrency.key.toLowerCase()"></div>
+        <div>{{ selectedCurrency.key }} - {{ selectedCurrency.value }}</div>
       </div>
     </ng-template>
     <ng-template let-currency pTemplate="item">
       <div class="flex align-items-center gap-2">
         <div
           class="currency-flag"
-          [class]="'currency-flag-' + currency.code.toLowerCase()"></div>
-        <div>{{ currency.code }} - {{ currency.name }}</div>
+          [class]="'currency-flag-' + currency.key.toLowerCase()"></div>
+        <div>{{ currency.key }} - {{ currency.value }}</div>
       </div>
     </ng-template>
   </p-dropdown>

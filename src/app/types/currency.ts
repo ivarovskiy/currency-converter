@@ -1,4 +1,3 @@
-export interface ICurrency {
-  code: string;
-  name: string;
+export interface ICurrencyRates {
+  [currencyCode: string]: string;
 }

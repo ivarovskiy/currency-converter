@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, timer } from 'rxjs';
 import { switchMap, startWith, map } from 'rxjs/operators';
 import { environment } from 'src/environment/environment.prod';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +33,8 @@ export class CurrencyService {
             .set('apikey', this.apiKey)
             .set('currencies', this.currencies)
             .set('base_currency', this.base_currency);
+
+          console.log('get timer data: ', this.currencies, this.base_currency);
 
           return this.http.get<any>(`${this.baseUrl}/latest`, { params });
         })
@@ -79,5 +83,31 @@ export class CurrencyService {
     );
   }
 
+  getConvertRates(convertFrom: string, convertTo: string): Observable<number> {
+    const currencies = convertTo;
+    const base_currency = convertFrom;
+
+    const params = new HttpParams()
+      .set('apikey', this.apiKey)
+      .set('currencies', currencies)
+      .set('base_currency', base_currency);
+
+    return this.http.get<any>(`${this.baseUrl}/latest`, { params }).pipe(
+      catchError(error => {
+        // Вывести ошибку в консоль
+        console.error('HTTP Error:', error);
+        // Пропустить ошибку дальше, чтобы компоненты могли ее обработать
+        return throwError(error);
+      }),
+      map(response => {
+        console.log('response: ', response.data[currencies].value);
+        if (response && response.data) {
+          return response.data[currencies].value; // Вернуть данные для обработки в компоненте
+        }
+      })
+    );
+  }
+
+  // https://api.currencyapi.com/v3/latest?apikey=cur_live_uf4teepHow21Dh37a5AZuvTIvBwPL4sapZqo3I8M&currencies=EUR&base_currency=AFN
   // https://api.currencyapi.com/v3/latest?apikey=cur_live_ReI1xPpkL1WYe7b6HqUhvqrfXNTcQjHZp0VSmnln&currencies=EUR%2CUSD%2CCAD&base_currency=UAH
 }

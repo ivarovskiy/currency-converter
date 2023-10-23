@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements OnInit {
-  formGroup!: FormGroup;
-
-  ngOnInit() {
-    this.formGroup = new FormGroup({
-      value: new FormControl(0),
-    });
-  }
+export class InputComponent {
+  @Input() inputId = ''; // Входной параметр для ID
+  @Input() form: FormGroup = new FormGroup({});
 }
