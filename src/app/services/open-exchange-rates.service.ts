@@ -54,7 +54,7 @@ export class OpenExchangeRatesService {
             }
             const convertedValue = parseFloat(value) * (toRate / fromRate);
 
-            return +convertedValue.toFixed(3);
+            return +convertedValue.toFixed(2);
           } else {
             throw new Error('Currency rates not found');
           }
