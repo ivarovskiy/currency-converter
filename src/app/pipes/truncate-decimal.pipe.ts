@@ -13,7 +13,6 @@ export class TruncateDecimalPipe implements PipeTransform {
       return 'Invalid Number';
     }
 
-    // Округляем число до 3 цифр после запятой и преобразуем его в строку
     return value.toFixed(3);
   }
 }

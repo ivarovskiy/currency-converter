@@ -7,6 +7,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  @Input() inputId = ''; // Входной параметр для ID
+  @Input() inputId = '';
   @Input() form: FormGroup = new FormGroup({});
 }

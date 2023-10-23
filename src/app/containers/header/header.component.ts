@@ -18,10 +18,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private openExRates: OpenExchangeRatesService) {}
 
   ngOnInit() {
-    // Сначала выполнить запрос
     this.updateCurrencyRates();
 
-    // Затем повторять каждую минуту
     interval(60000)
       .pipe(
         takeUntil(this.destroy$),
@@ -30,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.usd = data.rates['USD'] * data.rates['UAH'];
         this.eur = data.rates['EUR'] * data.rates['UAH'];
-        this.date = new Date(); // Обновляем текущую дату и время
+        this.date = new Date();
       });
   }
 
@@ -38,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.openExRates.getCurrencyRates().subscribe(data => {
       this.usd = data.rates['USD'] * data.rates['UAH'];
       this.eur = data.rates['EUR'] * data.rates['UAH'];
-      this.date = new Date(); // Обновляем текущую дату и время
+      this.date = new Date();
     });
   }
 
